@@ -1,0 +1,27 @@
+
+div.planet
+{
+	width: calc(100% - 4px);
+	height: calc(100% - 4px);
+	background-color: #aaa;
+	background-image: url("images/Mars-03.jpg");
+}
+
+div.stats
+{
+	font-size: larger;
+	padding-left: 2em;
+	padding-top: 2em;
+	text-align: left;
+	align: left;
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+
+img.rocket
+{
+	position: absolute;
+	left: 0px;
+	transform: rotate(90deg) translateX(0px) translateY(-400px);
+}
