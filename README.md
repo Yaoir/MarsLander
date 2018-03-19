@@ -12,18 +12,13 @@ When the page loads, the spacecraft is in the air and moving. You need to land i
 
 For controls, you have just the four arrow keys on your computer's keyboard:
 
-Up Arrow
-	Increase main engine thrust. There are 5 levels available.
+Up Arrow: Increase main engine thrust. There are 5 levels available.
 
-Down Arrow
-	Decrease main engine thrust.
+Down Arrow: Decrease main engine thrust.
 
-Left Arrow
-	Fire an attitude control thruster to turn the spacecraft counter-clockwise. It will keep spinning until you stop it.
-	To slow the rotation, use the Right Arrow key.
-Right Arrow
-	Fire an attitude control thruster to turn the spacecraft clockwise. It will keep spinning until you stop it.
-	To slow the rotation, use the Right Arrow key.
+Left Arrow: Fire an attitude control thruster to turn the spacecraft counter-clockwise. It will keep spinning until you stop it.  To slow the rotation, use the Right Arrow key.
+
+Right Arrow: Fire an attitude control thruster to turn the spacecraft clockwise. It will keep spinning until you stop it.  To slow the rotation, use the Right Arrow key.
 
 To stop the spacecraft from spinning, you must match left/right arrow key presses with the same number in the opposite direction.
 
