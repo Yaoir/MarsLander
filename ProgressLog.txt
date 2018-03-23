@@ -1,0 +1,33 @@
+Previously:
+	Had read Wikipedia and other web pages about React.js
+
+12 March 2018: (Monday)
+	Selected Learning React. Eos ordered it from Amazon Prime.
+	Started reading it on Safari.
+
+13 March 2018: (Tuesday)
+	started watching React Fundamentals video course on Safari
+
+14 March 2018:
+	finished watching React Fundamentals.
+	Book arrived at Eos's house. I picked it up that evening.
+
+18 March 2018:
+	Started work on MarsLander app. By end of day, a no-frills
+	version was working.
+
+19 March 2018: (Monday)
+	Added engine sound.
+	First git commit.
+	Pushed first version to GitHub
+	Got it working on AWS EC2 server, using Node.js server.
+
+20 March 2018:
+	Created flame images
+	
+22 March 2018:
+	Engine flame and attitude thruster jets work.
+	Rating message is display when landed.
+	Score is calculated (badly)
+	Support for mouse clicks (incl finger taps?) added
+		-> needs to be tested on mobile device
