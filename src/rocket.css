@@ -1,27 +1,112 @@
-
 div.planet
 {
+	position: absolute;
 	width: calc(100% - 4px);
 	height: calc(100% - 4px);
 	background-color: #aaa;
 	background-image: url("images/Mars-03.jpg");
+	z-index: -100;
 }
 
 div.stats
 {
-	font-size: larger;
-	padding-left: 2em;
-	padding-top: 2em;
-	text-align: left;
-	align: left;
-	position: relative;
+	position: absolute;
 	left: 0px;
 	top: 0px;
+	padding-left: 2em;
+	padding-top: 2em;
+	align: left;
+	text-align: left;
+	font-size: larger;
+}
+
+div.rating
+{
+	visibility: hidden;
+}
+
+div.landingpad
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+        height: 0px;	/* no space at all inside content box */
+	width: 100%;
+	border-style: solid;
+	/* draw just a 1-pixel horizontal line */
+	border-width: 1px 0px 0px 0px;
+        border-color: rgb(65%,16%,16%);
+}
+
+img.engine1
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.engine2
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.engine3
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.engine4
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.engine5
+{
+/*	visibility: hidden; */
+	visibility: visible;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.att_cw
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
+}
+
+img.att_ccw
+{
+	visibility: hidden;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transform: rotate(0deg) translateX(0px) translateY(0px);
 }
 
 img.rocket
 {
+	visibility: visible;
 	position: absolute;
+	top: 0px;
 	left: 0px;
-	transform: rotate(90deg) translateX(0px) translateY(-400px);
+	transform: rotate(0deg) translateX(0px) translateY(0px);
 }
