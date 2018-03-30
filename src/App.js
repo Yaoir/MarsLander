@@ -319,9 +319,17 @@ function keyboard_input(e)
 	return landed
 }
 
+var ran_mouse_input = false;
+
 function mouse_input(event)
 {
 	var x, y;
+
+	if(ran_mouse_input === false)
+	{
+		ran_mouse_input = true;
+		return;
+	}
 
 	/* handle mouse button presses or finger taps */
 
@@ -400,10 +408,10 @@ function score()
 
 	rating = this_rating;
 
-	if(vy < 1) this_rating = excellent;
-	else if(vy < 2) this_rating = good;
-	else if(vy < 5) this_rating = ok;
-	else if(vy < 10) this_rating = damage;
+	if(vy < 2) this_rating = excellent;
+	else if(vy < 4) this_rating = good;
+	else if(vy < 8) this_rating = ok;
+	else if(vy < 12) this_rating = damage;
 	else this_rating = crash;
 
 	if(this_rating < rating) rating = this_rating;
@@ -416,10 +424,23 @@ function score()
 
 	if(this_rating < rating) rating = this_rating;
 
-	distance = Math.abs(pos_x - window_width/2);
-	distance += 1;	// make sure it's > 0
+	let Xm = 500;
+	let Ym = 10;
+	let N = 6;
+	let Min = 0.05;
 
-	rating_multiplier = rating*rating;
+	// give credit for the quality of the landing
+
+	rating_multiplier = rating**2;
+
+	// rating_multiplier = Ym / ((abs(x/Xm + 1)^N)
+	// It's a 1/X^n function to make landing near the center
+	// score much higher than landing farther away.
+
+	// Distance from rocket to top landing spot
+	distance = lateral_position();
+	rating_multiplier *= Ym / (distance/Xm + 1)**N + Min;
+
 	landing_score = Math.round(rating_multiplier * (1000/distance));
 
 	switch(rating)
@@ -454,6 +475,11 @@ function score()
 function rating_css()
 {
 	return rating_style
+}
+
+function lateral_position()
+{
+	return Math.round(pos_x) - window_width/2 + rocket_width/2
 }
 
 function fly_rocket()
@@ -538,14 +564,15 @@ class App extends Component {
 			<div className="stats">
 				{/*<div>X: {Math.round(pos_x)} Y: {Math.round(pos_y)} </div>*/}
 				<div>Altitude: {landing_altitude - Math.round(pos_y)} velocity: {round2(10*final_vel_y)}</div>
-				<div>Lateral: {Math.round(pos_x) - window_width/2} velocity: {round2(10*final_vel_x)} </div>
+				<div>Lateral: {lateral_position()} velocity: {round2(10*final_vel_x)} </div>
 				<div>Rotation: {Math.round(rotation)} degrees</div>
 				{/* <div>Key: {key}</div> */}
 				<div className="rating" style={rating_css()}> { rating_message } </div>
 				<div className="rating" style={rating_css()}> Score: { landing_score } </div>
 			</div> {/* stats */}
 
-			<div className="landingpad" style={ pad_style() }></div>
+			<div className="landingpad" style={ pad_style() }>^</div>
+
 			</div> {/* planet */}
 			</div>
 		);
