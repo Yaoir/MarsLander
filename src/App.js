@@ -90,6 +90,8 @@ function set_sound_level()
 	sound_volume = 20 * Number(thrust_level);
 }
 
+/* pause() saves the dynamic state, then stops all of the physics */
+
 function pause()
 {
 	// positions
@@ -424,23 +426,28 @@ function score()
 
 	if(this_rating < rating) rating = this_rating;
 
-	let Xm = 500;
-	let Ym = 10;
-	let N = 6;
-	let Min = 0.05;
+	// coefficients for score calculation
+
+	// rating_multiplier = Ym / ((abs(x/Xm + 1)^N)
+
+	// It's a 1/(x^N) function to make landing near the center
+	// score much higher than landing farther away.
+	// x = distance from prime landing spot
+
+	let Xm = 500;	// stretches curve in X direction
+	let Ym = 10;	// stretches curve in Y direction
+	let N = 6;	// concavity of curve
+	let Min = 0.05;	// minimum multiplier
 
 	// give credit for the quality of the landing
 
 	rating_multiplier = rating**2;
 
-	// rating_multiplier = Ym / ((abs(x/Xm + 1)^N)
-	// It's a 1/X^n function to make landing near the center
-	// score much higher than landing farther away.
-
 	// Distance from rocket to top landing spot
-	distance = lateral_position();
-	rating_multiplier *= Ym / (distance/Xm + 1)**N + Min;
+	distance = Math.abs(lateral_position());
 
+	// score calculation
+	rating_multiplier *= Ym / (distance/Xm + 1)**N + Min;
 	landing_score = Math.round(rating_multiplier * (1000/distance));
 
 	switch(rating)
