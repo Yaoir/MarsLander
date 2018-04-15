@@ -31,3 +31,12 @@ Previously:
 	Score is calculated (badly)
 	Support for mouse clicks (incl finger taps?) added
 		-> needs to be tested on mobile device
+
+9 April 2018: better colors for rating messages 
+
+12 April 2018: fine-tuned scoring formula
+	For an excellent landing, scores range from about 250 to 60,000
+	for damage, 16 to 3750
+	
+	Planet image moved from CSS background-image to JSX.
+		It is now set (and can be replaced) in the app.

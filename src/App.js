@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react';	// ES6 module import
 import Sound from 'react-sound';
 import engine_sound from './audio/engine-5min.mp3';
 import rocket from './images/red.rocket/LittleRedRocket.png';
@@ -10,79 +10,80 @@ import blueflame5 from './images/red.rocket/BlueFlame5.png';
 import blueflameccw from './images/red.rocket/BlueFlameCCW.png';
 import blueflamecw from './images/red.rocket/BlueFlameCW.png';
 import './rocket.css';
+import planet from './images/Mars-03.jpg';
 
 // Rocket Measurements
 
-const little_red_rocket_height = 65;
+const little_red_rocket_height = 65;		// ES6 const
 const little_red_rocket_flame_height = 85;
 const little_red_rocket_width = 50;
 
-var rocket_height = little_red_rocket_height;
-var rocket_width =  little_red_rocket_width;
-var flame_height =  little_red_rocket_flame_height;
+let rocket_height = little_red_rocket_height;	// ES6 let
+let rocket_width =  little_red_rocket_width;
+let flame_height =  little_red_rocket_flame_height;
 
-var window_width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) - 8;
-var window_height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 8;
+let window_width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+let window_height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
 
 // maximum X for rocket to appear at
 // (to avoid extending beyond right edge of window)
 
-var max_x = window_width - rocket_width;
+let max_x = window_width - rocket_width;
 
-var landing_altitude = window_height - flame_height - rocket_height;
+let landing_altitude = window_height - flame_height - rocket_height;
 
 // set to true after rocket has landed or crashed
 
-var landed = false;
+let landed = false;
 
 // set Initial X position to right side of window
 
 // eslint-disable-next-line
-var pos_x = window_width - rocket_height;
+let pos_x = window_width - rocket_height;
 
 // set Initial Y position to top of window
 
 // eslint-disable-next-line
-var pos_y = 0
+let pos_y = 0
 
 // angle of rocket
 
-var rotation = 0
-//var rotation = 90	// point the rocket to the right
+let rotation = 0
+//let rotation = 90	// point the rocket to the right
 
 // set initial velocities
 
-var vel_x = -1.6
-var vel_y = 0
+let vel_x = -1.6
+let vel_y = 0
 
-var vel_ang = 0
+let vel_ang = 0
 
 // physical constant
 const thrust_incr = 0.006;
-var thrust = 0;
-var thrust_level = 0; // 1-5
+let thrust = 0;
+let thrust_level = 0; // 1-5
 
 // physical constant
-var gravity = 0.01;
+let gravity = 0.01;
 
 // eslint-disable-next-line
-var final_vel_y;
+let final_vel_y;
 // eslint-disable-next-line
-var final_vel_x;
+let final_vel_x;
 
-var saved_pos_x;
-var saved_pos_y;
-var saved_rotation;
-var saved_vel_x;
-var saved_vel_y;
-var saved_vel_ang;
-var saved_thrust;
-var saved_thrust_level;
-var saved_gravity;
-var paused = false;
+let saved_pos_x;
+let saved_pos_y;
+let saved_rotation;
+let saved_vel_x;
+let saved_vel_y;
+let saved_vel_ang;
+let saved_thrust;
+let saved_thrust_level;
+let saved_gravity;
+let paused = false;
 
-var sound_status = Sound.status.PLAYING
-var sound_volume = 0;
+let sound_status = Sound.status.PLAYING
+let sound_volume = 0;
 
 function set_sound_level()
 {
@@ -153,12 +154,12 @@ const key_DownArrow = 40;
 const key_P = 80;
 const key_Q = 81;
 // eslint-disable-next-line
-var key = 0;
+let key = 0;
 
 const up = 1;
 const down = 2;
 
-var flame_css_array = [
+let flame_css_array = [
 	{ visibility: "hidden" },
 	{ visibility: "hidden" },
 	{ visibility: "hidden" },
@@ -170,12 +171,12 @@ var flame_css_array = [
 const ccw = 0;
 const cw = 1;
 
-var jet_css_array = [
+let jet_css_array = [
 	{ visibility: "hidden" },
 	{ visibility: "hidden" },
 	];
 
-var jet_timer = 0;
+let jet_timer = 0;
 
 function jets_off()
 {
@@ -221,7 +222,7 @@ function set_thrust_level(level)
 
 function mod_thrust(direction)
 {
-	var i;
+	let i;
 
 	if(direction === up)
 	{
@@ -321,11 +322,11 @@ function keyboard_input(e)
 	return landed
 }
 
-var ran_mouse_input = false;
+let ran_mouse_input = false;
 
 function mouse_input(event)
 {
-	var x, y;
+	let x, y;
 
 	if(ran_mouse_input === false)
 	{
@@ -364,7 +365,7 @@ function deg2rad(theta)
 	return (Number(theta) * Math.PI) / 180;
 }
 
-var rocket_style;
+let rocket_style;
 
 function rocket_css()
 {
@@ -383,24 +384,33 @@ const ok = 2;
 const good = 3;
 const excellent = 4;
 
-var rating = 0;
-var rating_message = "";
-var rating_multiplier = 0;
+let rating = 0;
+let rating_message = "";
+let rating_multiplier = 0;
 
-var rating_style = { color: "blue", visibility: "hidden" };
+let rating_style = { color: "#0005e6", visibility: "hidden" };
 
-var landing_score = 0;
+function lateral_position()
+{
+	return Math.round(pos_x - window_width/2 + rocket_width/2);
+}
+
+let landing_score = 0;
 
 function score()
 {
-	var vx, vy, r;
-	var color;
-	var this_rating;
-	var distance;
+	let vx, vy, r;
+	let color;
+	let this_rating;
+	let distance;
 
 	vx = 10 * Math.abs(final_vel_x);
 	vy = 10 * Math.abs(final_vel_y);
 	r = Math.abs(rotation);
+
+	// find the minimu rating for the various components:
+
+	// horizonal velocity
 
 	if(vx < 1) this_rating = excellent;
 	else if(vx < 2) this_rating = good;
@@ -410,6 +420,8 @@ function score()
 
 	rating = this_rating;
 
+	// vertical velocity
+
 	if(vy < 2) this_rating = excellent;
 	else if(vy < 4) this_rating = good;
 	else if(vy < 8) this_rating = ok;
@@ -417,6 +429,8 @@ function score()
 	else this_rating = crash;
 
 	if(this_rating < rating) rating = this_rating;
+
+	// angle of rotation
 
 	if(r < 1) this_rating = excellent;
 	else if(r < 2) this_rating = good;
@@ -428,48 +442,52 @@ function score()
 
 	// coefficients for score calculation
 
-	// rating_multiplier = Ym / ((abs(x/Xm + 1)^N)
+	// rating_multiplier = Ym / ( (abs(x)/Xm + 1)^N )
 
-	// It's a 1/(x^N) function to make landing near the center
-	// score much higher than landing farther away.
+	// It's a 1/(x^N) function to make a landing near the
+	// center score much higher than landing farther away.
 	// x = distance from prime landing spot
 
-	let Xm = 500;	// stretches curve in X direction
-	let Ym = 10;	// stretches curve in Y direction
-	let N = 6;	// concavity of curve
-	let Min = 0.05;	// minimum multiplier
+	let Xm = window_width/2;	// Stretches curve in X direction
+	let Ym = 4000;	// Stretches curve in Y direction. Controls maximum score.
+	let N = 8;	// Concavity of curve. Higher is more concave.
+	let Min = 0.05;	// Minimum multiplier. Controls minimum score.
 
-	// give credit for the quality of the landing
+	// give credit for the quality of the landing by multiplying the rating by the following:
+	// crash: 0
+	// damage: 1
+	// acceptable: 4
+	// good: 9
+	// excellent: 16
 
-	rating_multiplier = rating**2;
+	rating_multiplier = rating**2;	// ES7 exponentiation
 
-	// Distance from rocket to top landing spot
+	// Distance from rocket to optimal landing spot
 	distance = Math.abs(lateral_position());
 
 	// score calculation
-	rating_multiplier *= Ym / (distance/Xm + 1)**N + Min;
-	landing_score = Math.round(rating_multiplier * (1000/distance));
+	landing_score = Math.round( (rating_multiplier * Ym) / ((distance/Xm + 1)**N + Min));
 
 	switch(rating)
 	{
 		case crash:
-			color = "red";
+			color = "#b30000";	// red
 			rating_message = "You crashed.";
 			break;
 		case damage:
-			color = "orange";
+			color = "#e39600";	// orange
 			rating_message = "The spacecraft was damaged.";
 			break;
 		case ok:
-			color = "yellow";
-			rating_message = "That was an OK landing.";
+			color = "#e3e300";	// yellow
+			rating_message = "That was an acceptable landing.";
 			break;
 		case good:
-			color = "green";
+			color = "#00a600";	// green
 			rating_message = "Good landing.";
 			break;
 		case excellent:
-			color = "blue";
+			color = "#0005e6";	// blue
 			rating_message = "Excellent landing!";
 			break;
 		default:
@@ -482,11 +500,6 @@ function score()
 function rating_css()
 {
 	return rating_style
-}
-
-function lateral_position()
-{
-	return Math.round(pos_x) - window_width/2 + rocket_width/2
 }
 
 function fly_rocket()
@@ -540,7 +553,7 @@ function fly_rocket()
 		score()
 	}
 
-	rocket_style = `translateX(${pos_x}px) translateY(${pos_y}px) rotate(${rotation}deg)`;
+	rocket_style = `translateX(${pos_x}px) translateY(${pos_y}px) rotate(${rotation}deg)`;	// ES6 string template
 }
 
 class App extends Component {
@@ -558,6 +571,7 @@ class App extends Component {
 				/>
 			</div> {/* sound */}
 			<div className="planet" style={planet_style()}>
+			<img className="planet" src={planet} alt=""/>
 
 			<img className="rocket" style={rocket_css()} src={rocket} alt="<->"/>
 			<img className="engine1" style={ Object.assign({}, flame_css(1), rocket_css()) } src={blueflame1} alt=""/>

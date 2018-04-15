@@ -1,11 +1,16 @@
 div.planet
 {
 	position: absolute;
-	width: calc(100% - 4px);
-	height: calc(100% - 4px);
-	background-color: #aaa;
-	background-image: url("images/Mars-03.jpg");
+	width: 100%;
+	height: 100%;
+	background-color: #000;
 	z-index: -100;
+	overflow: hidden;
+}
+
+img.planet
+{
+	height: 100%;
 }
 
 div.stats

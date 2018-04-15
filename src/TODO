@@ -1,8 +1,19 @@
-On-screen help for controls (i.e., use the arrow keys)
+On-screen help for controls (i.e., use the arrow keys, or tap)
 
-Better colors for landing rating and score
+Reset function to allow takeoffs : change position of caret
+
+make rocket into a class
+	x, y, vx, vy, rotation, vr, ..., paused, etc.
+
+Configuration:
+	rocket, planet
+
+On startup: display config/login screen
+
+Registration and accounts
 
 Needs image editing:
-
 	redo engine flame and animate it
-	Add cat
+	other rockets, planets
+
+Monitor refresh rate and set interval to that.
