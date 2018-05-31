@@ -1,6 +1,6 @@
 MarsLander is a spacecraft landing game developed in React.js
 
-You can play the game at my AWS EC2 server: http://18.216.216.93/
+You can play the game at my AWS EC2 server: http://18.188.188.52
 
 Right now, you are seeing just 4 days worth of development! I started working on MarsLander just four days before pushing this version to GitHub and the EC2 server.
 
