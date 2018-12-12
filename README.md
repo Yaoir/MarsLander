@@ -1,10 +1,12 @@
-MarsLander is a spacecraft landing game developed in React.js
+MarsLander is a spacecraft landing game developed in JavaScript and React.js. I wrote it to see if a real-time, interactive game could be developed in React.
 
-You can play the game at my AWS EC2 server: http://18.188.188.52
+The game is patterned on lunar lander games that were used as demos or games in the 1970s. It may seem really simple today, but at the time, it was fun and fairly advanced.
 
-Right now, you are seeing just 4 days worth of development! I started working on MarsLander just four days before pushing this version to GitHub and the EC2 server.
+https://en.wikipedia.org/wiki/Lunar_Lander_(video_game_genre)#Graphical_games
 
-I am supporting Linux, OS X and Windows for now.
+~~You can play the game at my AWS EC2 server: http://18.188.188.52~~ (unavailable for a while)
+
+It works best on desktops, where arrow keys are available.
 
 Here's how to play:
 
